@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>抽卡特訓班 (四階段完整版)</title>
+    <title>抽卡特訓班 (趣味電子)</title>
 
     <script>
         window.MathJax = {
@@ -175,7 +175,7 @@
 
     <div class="container">
         <div id="student-setup">
-            <h1>🎒 數位邏輯設計大挑戰：抽卡特訓班！</h1>
+            <h1>🎒 數位邏輯設計單元一大挑戰：抽卡特訓班！</h1>
             <div class="subtitle">連續答對 2 題即可抽卡！(滿5張特定卡可覺醒神卡)</div>
             
             <div class="warning-box">
@@ -335,304 +335,304 @@ const cardPacks = {
 }
 };
 const quizData = {
-    // === 第1章 數位邏輯基本概念特訓 (1-15) ===
+    // === 第1章 數位邏輯基本概念 (1-15) ===
     "q1": {
-        tag: "1-1 數量表示法：精密性與有效位數",
-        text: "傳統指針式三用電表在量測數值時，其有效位數通常為幾位？",
+        tag: "1-1 數量表示法：數位與類比",
+        text: "下列哪一項常用數量表示法屬於非連續變化的近似數量表示法？",
         options: [
-            { text: "3位", next: "q2", isCorrect: true },
-            { text: "4位", next: "q1_help", log: "Q1錯：指針式通常有效位數為三位" },
-            { text: "5位", next: "q1_help", log: "Q1錯" },
-            { text: "6位", next: "q1_help", log: "Q1錯" }
+            { text: "電子數字鐘的時、分、秒顯示", next: "q2", isCorrect: true },
+            { text: "溫度的連續變化", next: "q1_help", log: "Q1錯：溫度變化屬於類比表示法" },
+            { text: "汽車油門速度的變化", next: "q1_help", log: "Q1錯" },
+            { text: "人類體重的增減", next: "q1_help", log: "Q1錯" }
         ]
     },
     "q1_help": {
         tag: "救援：數量表示法",
-        text: "【提示】以三用電表為例，傳統指針式電表讀取到估計值後有效位數為三位，而數位電表精密性較高[cite: 1]。內容詳見第一章 1-1 節。",
-        aiPrompt: "解釋類比式儀表與數位式儀表在有效位數與讀值上的差異。",
+        text: "【提示】數位表示法為非連續變化的近似數量表示法，如電子數字鐘、數位式溫度計等[cite: 1]。內容詳見第一章 1-1 節。",
+        aiPrompt: "解釋類比表示法與數位表示法在數量變化上的差異。",
         aiUrl: "https://gemini.google.com/",
         options: [
-            { text: "3位", next: "q1", isCorrect: true },
+            { text: "電子數字鐘的時、分、秒顯示", next: "q1", isCorrect: true },
             { text: "其他", next: "q1_help", log: "救援失敗" }
         ]
     },
     "q2": {
-        tag: "1-2 類比系統：電路特性",
-        text: "基本類比電路為運算放大器 (OP Amp)，其電晶體工作點位於特性曲線中的哪一個區域？",
+        tag: "1-2 類比系統與數位系統：轉換電路",
+        text: "在混合系統中，若要將自然界的類比信號轉換成數位信號，應使用下列哪一個電路？",
         options: [
-            { text: "作用區 (active region)", next: "q3", isCorrect: true },
-            { text: "截止區 (cut-off region)", next: "q2_help", log: "Q2錯：截止區與飽和區屬於數位交換電路" },
-            { text: "飽和區 (saturation region)", next: "q2_help", log: "Q2錯" },
-            { text: "絕緣區", next: "q2_help", log: "Q2錯" }
+            { text: "類比數位轉換器 (ADC)", next: "q3", isCorrect: true },
+            { text: "數位類比轉換器 (DAC)", next: "q2_help", log: "Q2錯：DAC是將數位信號轉為類比信號" },
+            { text: "穩壓電路", next: "q2_help", log: "Q2錯" },
+            { text: "振盪電路", next: "q2_help", log: "Q2錯" }
         ]
     },
     "q2_help": {
-        tag: "救援：類比系統",
-        text: "【提示】基本類比電路運算放大器的電晶體工作點位於作用區，容易受溫度影響造成輸出不穩定[cite: 1]。詳見 1-2 節。",
-        aiPrompt: "說明類比電路中運算放大器的工作特性與溫度影響。",
+        tag: "救援：轉換電路",
+        text: "【提示】ADC (Analog-to-Digital Converter) 負責將類比信號轉換成數位信號[cite: 1]。詳見 1-2 節。",
+        aiPrompt: "說明ADC與DAC在混合系統中的功能與應用。",
         aiUrl: "https://gemini.google.com/",
         options: [
-            { text: "作用區 (active region)", next: "q2", isCorrect: true },
+            { text: "類比數位轉換器 (ADC)", next: "q2", isCorrect: true },
             { text: "其他", next: "q2_help", log: "救援失敗" }
         ]
     },
     "q3": {
-        tag: "1-3 數位系統：訊號與電路",
-        text: "數位電路又稱為交換電路，其內部的電晶體主要工作在哪兩個區域？",
+        tag: "1-3 邏輯準位：正負邏輯",
+        text: "在數位電路最常使用的正邏輯系統中，高電位與低電位通常分別對應到什麼符號？",
         options: [
-            { text: "截止區與飽和區", next: "q4", isCorrect: true },
-            { text: "作用區與線性區", next: "q3_help", log: "Q3錯：作用區是類比電路使用的區域" },
-            { text: "主動區與截止區", next: "q3_help", log: "Q3錯" },
-            { text: "飽和區與作用區", next: "q3_help", log: "Q3錯" }
+            { text: "高電位對應「1」，低電位對應「0」", next: "q4", isCorrect: true },
+            { text: "高電位對應「0」，低電位對應「1」", next: "q3_help", log: "Q3錯：高電位對應1、低電位對應0是正邏輯，反之為負邏輯" },
+            { text: "高電位與低電位皆對應「1」", next: "q3_help", log: "Q3錯" },
+            { text: "高電位與低電位皆對應「0」", next: "q3_help", log: "Q3錯" }
         ]
     },
     "q3_help": {
-        tag: "救援：數位系統",
-        text: "【提示】數位電路的邏輯閘電晶體工作於截止區與飽和區（交換區），使輸出為高或低準位[cite: 1]。詳見 1-3 節。",
-        aiPrompt: "解釋數位電路中電晶體為何工作於交換區。",
+        tag: "救援：邏輯準位",
+        text: "【提示】正邏輯中以「H」或「1」表示高電位，以「L」或「0」表示低電位[cite: 1]。詳見 1-3 節。",
+        aiPrompt: "解釋數位邏輯中正邏輯與負邏輯的定義與差別。",
         aiUrl: "https://gemini.google.com/",
         options: [
-            { text: "截止區與飽和區", next: "q3", isCorrect: true },
+            { text: "高電位對應「1」，低電位對應「0」", next: "q3", isCorrect: true },
             { text: "其他", next: "q3_help", log: "救援失敗" }
         ]
     },
     "q4": {
-        tag: "1-3 數位系統：自動控制元件",
-        text: "在自動控制方塊圖中，用來將自然界的物理量轉為電壓值（類比信號）的元件為何？",
+        tag: "1-3 脈波特性：工作週期",
+        text: "若一個週期性脈波的脈波寬度為 $t_w$，總週期為 $T$，則其工作週期 (duty cycle) 的計算公式為何？",
         options: [
-            { text: "感測器 (sensor)", next: "q5", isCorrect: true },
-            { text: "類比對數位轉換器 (ADC)", next: "q4_help", log: "Q4錯：ADC 是將類比電壓轉為數位信號" },
-            { text: "數位對類比轉換器 (DAC)", next: "q4_help", log: "Q4錯" },
-            { text: "控制機構", next: "q4_help", log: "Q4錯" }
+            { text: "$\\frac{t_w}{T} \\times 100\\%$", next: "q5", isCorrect: true },
+            { text: "$\\frac{T}{t_w} \\times 100\\%$", next: "q4_help", log: "Q4錯：工作週期為脈波寬度除以總週期" },
+            { text: "$t_w \\times T \\times 100\\%$", next: "q4_help", log: "Q4錯" },
+            { text: "$\\frac{1}{t_w \\times T} \\times 100\\%$", next: "q4_help", log: "Q4錯" }
         ]
     },
     "q4_help": {
-        tag: "救援：自動控制方塊圖",
-        text: "【提示】感測器負責把自然界中的物理量變化轉換成類比電壓值[cite: 1]。詳見 1-3 節自動控制方塊圖。",
-        aiPrompt: "介紹自動控制系統中感測器與 ADC/DAC 的功能。",
+        tag: "救援：工作週期",
+        text: "【提示】工作週期 $D\\%$ 定義為脈波寬度 $t_w$ 與脈波總週期 $T$ 的比值百分比[cite: 1]。詳見 1-3 節。",
+        aiPrompt: "說明脈波工作週期的計算方法與物理意義。",
         aiUrl: "https://gemini.google.com/",
         options: [
-            { text: "感測器 (sensor)", next: "q4", isCorrect: true },
+            { text: "$\\frac{t_w}{T} \\times 100\\%$", next: "q4", isCorrect: true },
             { text: "其他", next: "q4_help", log: "救援失敗" }
         ]
     },
     "q5": {
-        tag: "1-4 邏輯準位：輸入電壓範圍",
-        text: "在數位電路的輸入邏輯準位中，若輸入電壓落在 $V_{IH}$ 與 $V_{IL}$ 之間的區間，會被視為下列何種狀態？",
+        tag: "1-3 二進位表示法：MSB與LSB",
+        text: "在二進位加權表示式中，最左邊且加權值最高的位元通常稱為下列何者？",
         options: [
-            { text: "禁止使用區 (容易產生誤動作)", next: "q6", isCorrect: true },
-            { text: "邏輯高準位輸入", next: "q5_help", log: "Q5錯：高準位需大於等於 $V_{IH}$" },
-            { text: "邏輯低準位輸入", next: "q5_help", log: "Q5錯" },
-            { text: "懸空狀態", next: "q5_help", log: "Q5錯" }
+            { text: "最高有效位元 (MSB)", next: "q6", isCorrect: true },
+            { text: "最低有效位元 (LSB)", next: "q5_help", log: "Q5錯：最右邊加權值最低者才稱為LSB" },
+            { text: "工作週期", next: "q5_help", log: "Q5錯" },
+            { text: "雜訊邊限", next: "q5_help", log: "Q5錯" }
         ]
     },
     "q5_help": {
-        tag: "救援：電壓邏輯準位",
-        text: "【提示】當輸入電壓在 $V_{IH}$ 與 $V_{IL}$ 之間時，電路會產生誤動作，此區間屬於禁止使用區[cite: 1]。詳見 1-4 節。",
-        aiPrompt: "說明數位IC輸入邏輯準位中禁止使用區的原因。",
+        tag: "救援：二進位位元簡稱",
+        text: "【提示】最左邊加權值最高者為 MSB，最右邊加權值最低者為 LSB[cite: 1]。詳見 1-3 節。",
+        aiPrompt: "介紹二進位數值中MSB與LSB的意義與位置。",
         aiUrl: "https://gemini.google.com/",
         options: [
-            { text: "禁止使用區 (容易產生誤動作)", next: "q5", isCorrect: true },
+            { text: "最高有效位元 (MSB)", next: "q5", isCorrect: true },
             { text: "其他", next: "q5_help", log: "救援失敗" }
         ]
     },
     "q6": {
-        tag: "1-4 邏輯準位：正負邏輯",
-        text: "在正邏輯系統中，高電位與低電位分別對應的邏輯值為何？",
+        tag: "1-4 數位積體電路分類：IC規模",
+        text: "依內部電子元件數量分類，用來製作基本邏輯閘的積體電路通常屬於哪一種類型？",
         options: [
-            { text: "高電位對應邏輯 1，低電位對應邏輯 0", next: "q7", isCorrect: true },
-            { text: "高電位對應邏輯 0，低電位對應邏輯 1", next: "q6_help", log: "Q6錯：那是負邏輯的定義" },
-            { text: "高電位與低電位皆對應邏輯 1", next: "q6_help", log: "Q6錯" },
-            { text: "高電位與低電位皆對應邏輯 0", next: "q6_help", log: "Q6錯" }
+            { text: "小型積體電路 (SSI)", next: "q7", isCorrect: true },
+            { text: "超大型積體電路 (VLSI)", next: "q6_help", log: "Q6錯：VLSI元件數極多，不只基本邏輯閘" },
+            { text: "極大型積體電路 (ULSI)", next: "q6_help", log: "Q6錯" },
+            { text: "巨大型積體電路 (GSI)", next: "q6_help", log: "Q6錯" }
         ]
     },
     "q6_help": {
-        tag: "救援：正負邏輯",
-        text: "【提示】正邏輯中高電位對應邏輯 1，低電位對應邏輯 0；負邏輯則相反[cite: 1]。詳見 1-4 節。",
-        aiPrompt: "比較數位邏輯中正邏輯與負邏輯的差異。",
+        tag: "救援：IC規模分類",
+        text: "【提示】元件數在 $10^2$ 個以下、邏輯閘數在 $10^1$ 個以下的積體電路稱為小型積體電路 (SSI)，主要用於基本邏輯閘[cite: 1]。詳見 1-4 節。",
+        aiPrompt: "說明積體電路從SSI到GSI的分類與元件數量級距。",
         aiUrl: "https://gemini.google.com/",
         options: [
-            { text: "高電位對應邏輯 1，低電位對應邏輯 0", next: "q6", isCorrect: true },
+            { text: "小型積體電路 (SSI)", next: "q6", isCorrect: true },
             { text: "其他", next: "q6_help", log: "救援失敗" }
         ]
     },
     "q7": {
-        tag: "1-4 脈波特性：工作週期",
-        text: "非理想脈波的工作週期 (duty cycle, $D\\%$) 公式定義為何？",
+        tag: "1-4 數位IC特性：TTL與CMOS",
+        text: "下列有關標準 TTL 與 CMOS 數位積體電路的比較，何者正確？",
         options: [
-            { text: "$\\frac{t_w}{T} \\times 100\\%$", next: "q8", isCorrect: true },
-            { text: "$\\frac{T}{t_w} \\times 100\\%$", next: "q7_help", log: "Q7錯：工作週期為脈波寬度除以週期" },
-            { text: "$\\frac{t_r}{t_f} \\times 100\\%$", next: "q7_help", log: "Q7錯" },
-            { text: "$t_w \\times T \\times 100\\%$", next: "q7_help", log: "Q7錯" }
+            { text: "CMOS 的功率消耗比 TTL 來得低", next: "q8", isCorrect: true },
+            { text: "TTL 的電源電壓範圍比 CMOS 來得寬廣", next: "q7_help", log: "Q7錯：CMOS工作電壓範圍3V~18V，比TTL寬廣" },
+            { text: "CMOS 的工作速度一定比 TTL 快", next: "q7_help", log: "Q7錯：TTL工作速度通常較快" },
+            { text: "TTL 的消耗功率比 CMOS 低", next: "q7_help", log: "Q7錯" }
         ]
     },
     "q7_help": {
-        tag: "救援：工作週期",
-        text: "【提示】工作週期 $D\\%$ 為脈波寬度 $t_w$ 佔一週期 $T$ 的百分比[cite: 1]。詳見 1-4 節。",
-        aiPrompt: "解釋脈波工作週期的計算方式與理想方波的特性。",
+        tag: "救援：TTL與CMOS特性",
+        text: "【提示】CMOS IC具有消耗功率最低、電源電壓範圍較廣（3V~18V）等優點[cite: 1]。詳見 1-4 節。",
+        aiPrompt: "比較TTL與CMOS在功耗、工作電壓與速度上的差異。",
         aiUrl: "https://gemini.google.com/",
         options: [
-            { text: "$\\frac{t_w}{T} \\times 100\\%$", next: "q7", isCorrect: true },
+            { text: "CMOS 的功率消耗比 TTL 來得低", next: "q7", isCorrect: true },
             { text: "其他", next: "q7_help", log: "救援失敗" }
         ]
     },
     "q8": {
-        tag: "1-5 積體電路分類：IC複雜度",
-        text: "依積體電路內部電子元件數量分類，下列哪一個選項的規模最大？",
+        tag: "1-4 數位IC工作電壓：TTL系列",
+        text: "一般工業或商業用的 TTL 74 系列積體電路，其標準工作電源電壓 $V_{CC}$ 為何？",
         options: [
-            { text: "超大型積體電路 (VLSI)", next: "q9", isCorrect: true },
-            { text: "大型積體電路 (LSI)", next: "q8_help", log: "Q8錯：LSI 階級小於 VLSI" },
-            { text: "中型積體電路 (MSI)", next: "q8_help", log: "Q8錯" },
-            { text: "小型積體電路 (SSI)", next: "q8_help", log: "Q8錯" }
+            { text: "$5V$", next: "q9", isCorrect: true },
+            { text: "$3.3V$", next: "q8_help", log: "Q8錯：標準TTL為5V" },
+            { text: "$12V$", next: "q8_help", log: "Q8錯" },
+            { text: "$24V$", next: "q8_help", log: "Q8錯" }
         ]
     },
     "q8_help": {
-        tag: "救援：IC分類",
-        text: "【提示】IC規模由大到小排序為：ULSI > VLSI > LSI > MSI > SSI[cite: 1]。詳見 1-5 節。",
-        aiPrompt: "列出並說明積體電路依元件數量的五個分類等級。",
+        tag: "救援：TTL工作電壓",
+        text: "【提示】工、商用的 74 系列 TTL IC 標準電源電壓為 $5V$（實際規範為 $5V \\pm 0.25V$ 或 $\\pm 0.5V$）[cite: 1]。詳見 1-4 節。",
+        aiPrompt: "說明TTL 74系列與軍用54系列的電源電壓與溫度規格。",
         aiUrl: "https://gemini.google.com/",
         options: [
-            { text: "超大型積體電路 (VLSI)", next: "q8", isCorrect: true },
+            { text: "$5V$", next: "q8", isCorrect: true },
             { text: "其他", next: "q8_help", log: "救援失敗" }
         ]
     },
     "q9": {
-        tag: "1-5 數位IC封裝：固定方式",
-        text: "積體電路封裝中，不需要在印刷電路板 (PCB) 上打洞，且接腳配置更為緊密的封裝技術稱為？",
+        tag: "1-4 數位IC處理規定：CMOS空接",
+        text: "關於數位 CMOS IC 未使用到的輸入端接腳，下列處置方式何者正確？",
         options: [
-            { text: "表面黏著型 (SMT)", next: "q10", isCorrect: true },
-            { text: "腳針插入型 (PTH)", next: "q9_help", log: "Q9錯：PTH 需要在PCB先鑽孔" },
-            { text: "雙列腳位封裝 (DIP)", next: "q9_help", log: "Q9錯" },
-            { text: "單列腳位封裝 (SIP)", next: "q9_help", log: "Q9錯" }
+            { text: "不可空接，必須依電路邏輯連接至電源端或接地端", next: "q10", isCorrect: true },
+            { text: "直接讓其保持懸空即可", next: "q9_help", log: "Q9錯：CMOS輸入端空接易受雜訊干擾，不可空接" },
+            { text: "隨意接在輸出端", next: "q9_help", log: "Q9錯" },
+            { text: "全部接到導線互相短路", next: "q9_help", log: "Q9錯" }
         ]
     },
     "q9_help": {
-        tag: "救援：封裝分類",
-        text: "【提示】表面黏著型 (SMT) 不需要於 PCB 打洞，業界產品多以此為主[cite: 1]。詳見 1-5 節。",
-        aiPrompt: "比較腳針插入型 (PTH) 與表面黏著型 (SMT) 封裝的異同。",
+        tag: "救援：CMOS接腳處理",
+        text: "【提示】CMOS 輸入端具有極高輸入阻抗，不可以空接，避免受雜訊干擾而燒毀或誤動作[cite: 1]。詳見 1-4 節。",
+        aiPrompt: "說明為什麼CMOS IC未使用的輸入端不能空接。",
         aiUrl: "https://gemini.google.com/",
         options: [
-            { text: "表面黏著型 (SMT)", next: "q9", isCorrect: true },
+            { text: "不可空接，必須依電路邏輯連接至電源端或接地端", next: "q9", isCorrect: true },
             { text: "其他", next: "q9_help", log: "救援失敗" }
         ]
     },
     "q10": {
-        tag: "1-5 數位IC特性：TTL系列",
-        text: "商用或工業用的 TTL 74XX 系列積體電路，其標準工作電源電壓範圍為何？",
+        tag: "1-4 數位IC特性：雜訊邊限",
+        text: "雜訊邊限 (Noise Margin) 在數位電路中主要代表什麼意義？",
         options: [
-            { text: "$5V \\pm 5\\% (4.75V \\sim 5.25V)$", next: "q11", isCorrect: true },
-            { text: "$5V \\pm 10\\% (4.5V \\sim 5.5V)$", next: "q10_help", log: "Q10錯：$5V \\pm 10\\%$ 是軍用的 54 系列" },
-            { text: "$3V \\sim 18V$", next: "q10_help", log: "Q10錯" },
-            { text: "$12V \\pm 5\\%$", next: "q10_help", log: "Q10錯" }
+            { text: "在不改變輸出端電壓邏輯準位下所能承受的最大雜訊電壓", next: "q11", isCorrect: true },
+            { text: "IC傳遞信號的速度快慢", next: "q10_help", log: "Q10錯：傳遞速度由傳遞延遲時間決定" },
+            { text: "邏輯閘所消耗的功率大小", next: "q10_help", log: "Q10錯" },
+            { text: "輸出端能夠推動的負載數量", next: "q10_help", log: "Q10錯" }
         ]
     },
     "q10_help": {
-        tag: "救援：TTL系列特性",
-        text: "【提示】74系列為商用電壓 $5V \\pm 5\\%$；54系列為軍用電壓 $5V \\pm 10\\%$[cite: 1]。詳見 1-5 節表1-5。",
-        aiPrompt: "說明 TTL 74系列與 54系列在電壓與溫度規格上的差異。",
+        tag: "救援：雜訊邊限定義",
+        text: "【提示】雜訊邊限越大，表示電路抑制雜訊、防止信號失真的能力越高[cite: 1]。詳見 1-4 節。",
+        aiPrompt: "解釋數位積體電路中雜訊邊限 (Noise Margin) 的定義與計算方式。",
         aiUrl: "https://gemini.google.com/",
         options: [
-            { text: "$5V \\pm 5\\% (4.75V \\sim 5.25V)$", next: "q10", isCorrect: true },
-            { text: "Other", next: "q10_help", log: "救援失敗" }
+            { text: "在不改變輸出端電壓邏輯準位下所能承受的最大雜訊電壓", next: "q10", isCorrect: true },
+            { text: "其他", next: "q10_help", log: "救援失敗" }
         ]
     },
     "q11": {
-        tag: "1-5 數位IC特性：CMOS技術",
-        text: "CMOS 積體電路主要是由哪兩種場效電晶體互補組成？",
+        tag: "1-4 數位IC特性：扇出數",
+        text: "所謂的扇出數 (Fan-out) 是用來衡量邏輯閘的哪一種能力？",
         options: [
-            { text: "NMOS 與 PMOS", next: "q12", isCorrect: true },
-            { text: "NPN 與 PNP", next: "q11_help", log: "Q11錯：NPN 與 PNP 是 BJT 雙極性電晶體" },
-            { text: "JFET 與 BJT", next: "q11_help", log: "Q11錯" },
-            { text: "CMOS 與 TTL", next: "q11_help", log: "Q11錯" }
+            { text: "輸出端所能推動同類型邏輯閘負載的最大能力", next: "q12", isCorrect: true },
+            { text: "輸入端接收外部雜訊的能力", next: "q11_help", log: "Q11錯：扇出數是輸出端推動負載的能力" },
+            { text: "電源供應器轉換電壓的能力", next: "q11_help", log: "Q11錯" },
+            { text: "晶片本身的散熱能力", next: "q11_help", log: "Q11錯" }
         ]
     },
     "q11_help": {
-        tag: "救援：CMOS組成",
-        text: "【提示】CMOS 以 FET 中的 NMOS 和 PMOS 兩元件互補組成[cite: 1]。詳見 1-5 節。",
-        aiPrompt: "解釋 CMOS 的基本結構與其功率消耗小的特性。",
+        tag: "救援：扇出數定義",
+        text: "【提示】扇出數是指邏輯閘輸出端能推動同型負載的最大數量，數值通常取高態與低態扇出數的較小者[cite: 1]。詳見 1-4 節。",
+        aiPrompt: "說明扇出數的定義與影響電路設計的原因。",
         aiUrl: "https://gemini.google.com/",
         options: [
-            { text: "NMOS 與 PMOS", next: "q11", isCorrect: true },
+            { text: "輸出端所能推動同類型邏輯閘負載的最大能力", next: "q11", isCorrect: true },
             { text: "其他", next: "q11_help", log: "救援失敗" }
         ]
     },
     "q12": {
-        tag: "1-5 數位IC參數：扇出數",
-        text: "扇出數 (fan-out) 用來衡量邏輯閘的負載推動能力，當高態扇出數與低態扇出數不同時，實際的扇出數應如何決定？",
+        tag: "1-4 數位IC封裝：銲接技術",
+        text: "積體電路封裝中，不須在印刷電路板 (PCB) 上鑽孔，可直接將元件黏貼至電路板表面進行銲接的技術稱為？",
         options: [
-            { text: "取兩者之最小值 $\\min(N_H, N_L)$", next: "q13", isCorrect: true },
-            { text: "取兩者之最大值 $\\max(N_H, N_L)$", next: "q12_help", log: "Q12錯：取小值以確保極端狀況下不推力不足" },
-            { text: "取兩者之平均值", next: "q12_help", log: "Q12錯" },
-            { text: "僅計算高態扇出數", next: "q12_help", log: "Q12_help錯" }
+            { text: "表面黏著技術 (SMT)", next: "q13", isCorrect: true },
+            { text: "接腳插入型 (PTH)", next: "q12_help", log: "Q12錯：PTH需要印刷電路板先鑽孔" },
+            { text: "穿孔技術 (THT)", next: "q12_help", log: "Q12_help錯" },
+            { text: "傳統插件技術", next: "q12_help", log: "Q12錯" }
         ]
     },
     "q12_help": {
-        tag: "救援：扇出數定義",
-        text: "【提示】扇出數會取高態與低態扇出數的最小值，即 $\\min(N_H, N_L)$[cite: 1]。詳見 1-5 節。",
-        aiPrompt: "說明扇出數的定義與高低態扇出數的取值原則。",
+        tag: "救援：封裝銲接技術",
+        text: "【提示】表面黏著技術 (SMT) 不需要於PCB打洞，是目前業界量產最常用的封裝銲接方式[cite: 1]。詳見 1-4 節。",
+        aiPrompt: "比較接腳插入型 (PTH) 與表面黏著技術 (SMT) 的差異。",
         aiUrl: "https://gemini.google.com/",
         options: [
-            { text: "取兩者之最小值 $\\min(N_H, N_L)$", next: "q12", isCorrect: true },
+            { text: "表面黏著技術 (SMT)", next: "q12", isCorrect: true },
             { text: "其他", next: "q12_help", log: "救援失敗" }
         ]
     },
     "q13": {
-        tag: "1-5 數位IC參數：傳輸延遲時間",
-        text: "傳輸延遲時間 $t_{pd}$ 的計算公式為？",
+        tag: "1-4 數位IC封裝：接腳型式",
+        text: "下列哪一種 IC 封裝型式，其四面接腳導線皆向外彎成海鷗翅型 (gull-wing)？",
         options: [
-            { text: "$\\frac{t_{phl} + t_{plh}}{2}$", next: "q14", isCorrect: true },
-            { text: "$t_{phl} + t_{plh}$", next: "q13_help", log: "Q13錯：需將高轉低與低轉高延遲相加後除以2" },
-            { text: "$t_{phl} \\times t_{plh}$", next: "q13_help", log: "Q13錯" },
-            { text: "$\\frac{t_{phl} - t_{plh}}{2}$", next: "q13_help", log: "Q13錯" }
+            { text: "四邊扁平式封裝 (QFP)", next: "q14", isCorrect: true },
+            { text: "塑料電極晶片載體 (PLCC)", next: "q13_help", log: "Q13錯：PLCC的接腳是向內彎成J型" },
+            { text: "針格陣列式封裝 (PGA)", next: "q13_help", log: "Q13錯" },
+            { text: "雙列直插封裝 (DIP)", next: "q13_help", log: "Q13錯" }
         ]
     },
     "q13_help": {
-        tag: "救援：傳輸延遲時間",
-        text: "【提示】傳輸延遲時間定義為 $t_{pd} = \\frac{t_{phl} + t_{plh}}{2}$[cite: 1]。詳見 1-5 節。",
-        aiPrompt: "說明數位IC傳輸延遲時間 $t_{phl}$ 與 $t_{plh}$ 的含義。",
+        tag: "救援：IC封裝接腳",
+        text: "【提示】QFP 封裝的四面接腳皆向外彎成海鷗翅型（L型），而 PLCC 則是向內彎成 J 型[cite: 1]。詳見 1-4 節。",
+        aiPrompt: "介紹QFP與PLCC封裝之外觀與接腳特徵。",
         aiUrl: "https://gemini.google.com/",
         options: [
-            { text: "$\\frac{t_{phl} + t_{plh}}{2}$", next: "q13", isCorrect: true },
+            { text: "四邊扁平式封裝 (QFP)", next: "q13", isCorrect: true },
             { text: "其他", next: "q13_help", log: "救援失敗" }
         ]
     },
     "q14": {
-        tag: "1-5 可程式邏輯裝置：SPLD分類",
-        text: "在 SPLD 家族中，哪一種元件具有電氣清除特性且可以「重複規劃」？",
+        tag: "1-4 可程式邏輯：SPLD結構",
+        text: "在簡單型可程式邏輯裝置 (SPLD) 中，若其 AND 陣列可程式化而 OR 陣列為固定結構，則此元件稱為？",
         options: [
-            { text: "GAL (通用陣列邏輯)", next: "q15", isCorrect: true },
-            { text: "PLA (可程式邏輯陣列)", next: "q14_help", log: "Q14錯：PLA 只能規劃一次，已慢慢淘汰" },
-            { text: "PROM (可程式唯讀記憶體)", next: "q14_help", log: "Q14錯" },
-            { text: "PAL (可程式陣列邏輯)", next: "q14_help", log: "Q14錯" }
+            { text: "可程式陣列邏輯 (PAL)", next: "q15", isCorrect: true },
+            { text: "可程式唯讀記憶體 (PROM)", next: "q14_help", log: "Q14錯：PROM是AND固定、OR可程式化" },
+            { text: "可程式邏輯陣列 (PLA)", next: "q14_help", log: "Q14錯：PLA的AND與OR均可程式化" },
+            { text: "運算放大器", next: "q14_help", log: "Q14錯" }
         ]
     },
     "q14_help": {
-        tag: "救援：SPLD特性",
-        text: "【提示】GAL 與 PEEL 具有電氣清除特性可重複規劃，而 PROM 與 PLA 通常只能規劃一次[cite: 1]。詳見 1-5 節表1-7。",
-        aiPrompt: "比較 SPLD 中 PLA、PAL、GAL 的規劃特性與可規劃次數。",
+        tag: "救援：SPLD結構分類",
+        text: "【提示】PROM的AND固定、OR可程式；PAL的AND可程式、OR固定；PLA則是兩者皆可程式化[cite: 1]。詳見 1-4 節。",
+        aiPrompt: "比較PROM、PAL、PLA在AND與OR陣列規劃上的不同。",
         aiUrl: "https://gemini.google.com/",
         options: [
-            { text: "GAL (通用陣列邏輯)", next: "q14", isCorrect: true },
+            { text: "可程式陣列邏輯 (PAL)", next: "q14", isCorrect: true },
             { text: "其他", next: "q14_help", log: "救援失敗" }
         ]
     },
     "q15": {
-        tag: "1-5 可程式邏輯裝置：FPGA架構",
-        text: "FPGA 內部不含傳統的 AND-OR 規劃陣列，而是利用靜態記憶體 (SRAM) 形成下列哪一種核心架構來處理邏輯？",
+        tag: "1-4 可程式邏輯：FPGA與容量",
+        text: "在各類可程式邏輯元件中，哪一種類型的邏輯閘容量最大，且採用類似靜態記憶體 (SRAM) 的查詢表 (LUT) 架構？",
         options: [
-            { text: "查詢表 (Look Up Table, LUT)", next: "end", isCorrect: true },
-            { text: "運算放大器陣列", next: "q15_help", log: "Q15錯：FPGA 使用查詢表架構" },
-            { text: "保險絲熔斷矩陣", next: "q15_help", log: "Q15錯" },
-            { text: "雙極性接面電晶體群", next: "q15_help", log: "Q15錯" }
+            { text: "現場可程式閘陣列 (FPGA)", next: "end", isCorrect: true },
+            { text: "簡單型PLD (SPLD)", next: "q15_help", log: "Q15錯：SPLD容量最小" },
+            { text: "可程式陣列邏輯 (PAL)", next: "q15_help", log: "Q15錯" },
+            { text: "通用陣列邏輯 (GAL)", next: "q15_help", log: "Q15錯" }
         ]
     },
     "q15_help": {
-        tag: "救援：FPGA架構",
-        text: "【提示】FPGA 以 SRAM 形成查詢表 (LUT) 為架構，把所有輸入與輸出的可能性列出查表對應[cite: 1]。詳見 1-5 節。",
-        aiPrompt: "解釋 FPGA 內部查詢表 (LUT) 的運作原理與斷電資料清除特性。",
+        tag: "救援：FPGA特性",
+        text: "【提示】FPGA (Field-Programmable Gate Array) 內部採用查詢表 (LUT) 架構，是邏輯閘容量最高、電路最複雜的PLD元件[cite: 1]。詳見 1-4 節。",
+        aiPrompt: "說明FPGA的內部查詢表(LUT)架構與高容量特性。",
         aiUrl: "https://gemini.google.com/",
         options: [
-            { text: "查詢表 (Look Up Table, LUT)", next: "q15", isCorrect: true },
+            { text: "現場可程式閘陣列 (FPGA)", next: "q15", isCorrect: true },
             { text: "其他", next: "q15_help", log: "救援失敗" }
         ]
     }
@@ -1176,7 +1176,7 @@ localStorage.setItem(storageKey, JSON.stringify(currentCollection));
                 diagnosticLogs.length, 
                 `[AI求助:${aiCopyCount}次] | ` + diagnosticLogs.join(" | "), // 💡 聰明做法：把次數塞在錯誤詳細裡，不佔用獨立欄位
                 itemsText
-	, "數位邏輯_線上期末"
+	, "趣味電子_單元一"
             );
         }
         
